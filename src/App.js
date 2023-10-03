@@ -40,12 +40,15 @@ function App() {
     toast.error(msg, {position: toast.POSITION.TOP_CENTER, theme: 'dark', autoClose: 1000})
   }
 
- 
+ const handleOnDragEnd = (res) => {
+  console.log(res)
+ }
   return (
     <>
      <div className="app">
       <ToastContainer />
         <Navbar data = {boardClone} searchFunc = {searchFunc}/>
+        <DragDropContext onDragEnd={handleOnDragEnd}>     
           <div className="app_outer">   
               { boardItem == undefined ? 
                 //if no cards in boards  
@@ -69,6 +72,7 @@ function App() {
                 </div> 
               } 
           </div>
+        </DragDropContext>
       </div>
     </>
   );

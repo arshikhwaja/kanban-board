@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import { Search, Underline } from 'react-feather';
+import { Search} from 'react-feather';
 
 function Navbar(props) {
   const [search, setSearch] = useState("");
