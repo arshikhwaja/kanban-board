@@ -20,7 +20,7 @@ function Cards(props) {
   }
 
   return (
-    <div className="cards" draggable={true} onDrag={() => {console.log("drag")}} >
+    <div className="cards" draggable={false} onDrag={() => {console.log("drag")}} >
         <p className="card-title">{props.title}</p>
         <p className="card-text">{props.description}</p>
         <a href="#" className="btn btn-primary" onClick={handleEdit.bind(null, props.data , props.title , props.description)}>Edit</a> &nbsp;&nbsp;
