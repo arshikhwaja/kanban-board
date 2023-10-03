@@ -1,0 +1,42 @@
+.container{
+    display: flexbox; 
+    
+}
+.boards{
+    gap: 1px;
+    border-radius: 10px;
+    width: 445px;
+    height: auto;
+    background-color: #f1f3f9;   
+    overflow: auto;  
+    }
+
+
+.board_title{
+    padding-left: 20px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 19px;
+    position: sticky;
+    height: 50px;
+    padding-bottom: 50px;
+    top: 0;
+    
+    
+    
+}
+
+.board_title > span{
+    margin-left: 269px;
+}
+
+.board-content{
+    overflow: auto;   
+    width: 445px;
+    height: 500px;
+    background-color: #f1f3f9;   
+    
+    
+}

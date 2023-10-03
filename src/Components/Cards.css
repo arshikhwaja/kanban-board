@@ -1,0 +1,32 @@
+.cards{
+    border-style: 1px solid white ;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #c6c7cb;
+    overflow:  auto;
+    width: 400px;
+    height: 190px;
+    background-color: white;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
+    cursor: move;
+}
+
+.cards.over{
+    border: 3px dotted #666;
+}
+
+.card-title{
+    flex: auto;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.card-text{
+    flex:auto;
+    font-size: 15px;
+    padding-top: 7px;
+    
+}
+
