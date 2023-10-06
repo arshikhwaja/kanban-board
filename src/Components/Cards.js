@@ -20,7 +20,7 @@ function Cards(props) {
   }
 
   return (
-    <Draggable draggableId={props.data}>
+    <Draggable draggableId={props.data} key={props.data} index={props.index}>
     {(provided) => (  
     <div ref={provided.innerRef}  
     {...provided.draggableProps}  

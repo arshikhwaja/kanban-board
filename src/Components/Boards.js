@@ -28,11 +28,7 @@ const Boards = (props) => {
   const boardAlert = (msg) => {
     props.appAlert(msg);
   }
-
-  const cardDrop= () => {
-    console.log("card drop")
-  }
-  
+ 
   return ( 
     <Droppable droppableId={props.title.trim()}>
        {(provided) => (  
@@ -46,9 +42,9 @@ const Boards = (props) => {
            </span>
          </div>
          <div className = "board-content">
-           {props.boardData != null && Object.keys(props.boardData).map((item) => {
+           {props.boardData != null && props.boardData.map((item, index) => {
                return (
-                <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} boardData= {props.title} data = {item} title = {props.boardData[item].title} description = {props.boardData[item].description}/> 
+                <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} index = {index} boardData= {props.title} data = {item.id} title = {item.title} description = {item.description}/> 
               )
              })  
           
