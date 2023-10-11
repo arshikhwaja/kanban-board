@@ -15,6 +15,10 @@ const Modal = (props) => {
 
  const db = getDatabase(app);
   const addData = () => {
+    if(!inputText || !inputDesc){
+      props.modalAlert("Please enter task :(");
+      return;
+    }
       if (props.isEdit === true) { //if edit is clicked
         const postData = {
           title: inputText,
