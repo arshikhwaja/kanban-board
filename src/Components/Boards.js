@@ -41,17 +41,18 @@ const Boards = (props) => {
                {showModal && <Modal modalAlert = {boardAlert} isEdit ={isEdit} showEditModal = {showEditModal} cardID = {cardID}  title = {isEdit ? title : ""} description =  {isEdit ? description : ""} type={props.title} onClose= {() =>setShowModal(false)} />}
            </span>
          </div>
-         <div className = "board-content">
-           {props.boardData != null && props.boardData.map((item, index) => {
-               return (
-                <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} index = {index} boardData= {props.title} data = {item.id} title = {item.title} description = {item.description}/> 
-              )
-             })  
-          
-           }
-         </div>    
+         
+            <div className = "board-content">
+              {props.boardData != null && props.boardData.map((item, index) => {
+                  return (
+                    <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} index = {index} boardData= {props.title} data = {item.id} title = {item.title} description = {item.description}/> 
+                  )
+                })  
+              
+              }
+            </div>  
+         </div>  
        </div>
-     </div>
       )}
     </Droppable>
   )

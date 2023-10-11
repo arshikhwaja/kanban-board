@@ -1,6 +1,6 @@
 .container{
     display: flexbox; 
-    
+    overflow: auto;
 }
 .boards{
     gap: 1px;
@@ -9,6 +9,9 @@
     height: auto;
     background-color: #f1f3f9;   
     overflow: auto;  
+    margin-top: 5px;
+    margin-bottom: auto;
+    padding-top: 10px;
     }
 
 
@@ -19,13 +22,14 @@
     align-items: center;
     font-weight: bold;
     font-size: 19px;
-    position: sticky;
-    height: 50px;
-    padding-bottom: 50px;
-    top: 0;
-    
-    
-    
+    position: absolute !important;
+    height: 40px;
+    width: 445px;
+    padding-bottom: 40px;
+    bottom: 550px;
+    margin-top: 1px;
+    margin-bottom: auto;
+    background-color: #f1f3f9;
 }
 
 .board_title > span{
@@ -33,10 +37,9 @@
 }
 
 .board-content{
+    padding-top: 60px;
     overflow: auto;   
     width: 445px;
-    height: 500px;
+    height: auto;
     background-color: #f1f3f9;   
-    
-    
 }

@@ -23,30 +23,32 @@ function App() {
     const cardData = ref(db, 'Boards/');
     onValue(cardData, async (snapshot) => {
     const data = await snapshot.val();
-  
-    const toDo = Object.entries(data["To Do"]).map(([key, value]) => ({
-       
-        id: key,
-        title : value.title,
-        description : value.description        
+    let toDo, progress, completed;
+    if(data !== null) {
+      if (data.hasOwnProperty("To Do")){
+      toDo = Object.entries(data["To Do"]).map(([key, value]) => ({
+          id: key,
+          title : value.title,
+          description : value.description        
+      }))
+      }
       
-     }))
-     
-     
-     const progress = Object.entries(data["In Progress"]).map(([key, value]) => ({
-        id: key,
-        title : value.title,
-        description : value.description
+      if (data.hasOwnProperty("In Progress")){
+        progress = Object.entries(data["In Progress"]).map(([key, value]) => ({
+            id: key,
+            title : value.title,
+            description : value.description
+        }))
+      }
       
-     }))
-
-     const completed = Object.entries(data["Completed"]).map(([key, value]) => ({
-        id: key,
-        title : value.title,
-        description : value.description
-      
-     }))
-
+      if (data.hasOwnProperty("Completed")){
+        completed = Object.entries(data["Completed"]).map(([key, value]) => ({
+            id: key,
+            title : value.title,
+            description : value.description   
+        }))
+      }
+    }
      const finalData = {'To Do':toDo, 
       'In Progress': progress,
       'Completed': completed
@@ -95,6 +97,7 @@ function App() {
     setBoardItem((previousBoardItem) => ({...previousBoardItem, [source.droppableId] : sourceBoard}))
   }
  }
+ console.log(boardItem)
   return (
     <>
      <div className="app">
