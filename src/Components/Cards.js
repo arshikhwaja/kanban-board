@@ -3,7 +3,7 @@ import './Cards.css';
 import './Modal';
 import {app} from '../config';
 import {getDatabase, ref, update, remove} from 'firebase/database';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 
 function Cards(props) {
   const db = getDatabase(app);
@@ -20,12 +20,19 @@ function Cards(props) {
   }
 
   return (
-    <div className="cards" draggable={true} onDrag={() => {console.log("drag")}} >
+    <Draggable draggableId={props.data} key={props.data} index={props.index}>
+    {(provided) => (  
+    <div ref={provided.innerRef}  
+    {...provided.draggableProps}  
+    {...provided.dragHandleProps}  
+    className="cards">
         <p className="card-title">{props.title}</p>
         <p className="card-text">{props.description}</p>
         <a href="#" className="btn btn-primary" onClick={handleEdit.bind(null, props.data , props.title , props.description)}>Edit</a> &nbsp;&nbsp;
         <a href="#" className="btn btn-danger" onClick={handleDelete}>Delete</a>
     </div>
+    )}
+    </Draggable>
   )
 }
 

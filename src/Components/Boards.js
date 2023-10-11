@@ -7,6 +7,7 @@ import config from '../config';
 import {app} from '../config';
 import {getDatabase, ref, set, push, get, onValue} from 'firebase/database';
 import { isVisible } from '@testing-library/user-event/dist/utils';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 const Boards = (props) => {
@@ -27,33 +28,32 @@ const Boards = (props) => {
   const boardAlert = (msg) => {
     props.appAlert(msg);
   }
-
-  const cardDrop= () => {
-    console.log("card drop")
-  }
-
-  
+ 
   return ( 
-    <div className="container" onDragEnd={cardDrop}>
-      <div className="boards"> 
-        <div className="board_title">  
-          {props.title} 
-          <span>
-              <iconbutton onClick={()=> {setShowModal(true); setIsEdit(false)}}><BsFillPlusCircleFill size='25px'/></iconbutton>          
-              {showModal && <Modal modalAlert = {boardAlert} isEdit ={isEdit} showEditModal = {showEditModal} cardID = {cardID}  title = {isEdit ? title : ""} description =  {isEdit ? description : ""} type={props.title} onClose= {() =>setShowModal(false)} />}
-          </span>
-        </div>
-        <div className = "board-content">
-          {props.boardData != null && Object.keys(props.boardData).map((item) => {
-              return (
-              <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} boardData= {props.title} data = {item} title = {props.boardData[item].title} description = {props.boardData[item].description}/> 
+    <Droppable droppableId={props.title.trim()}>
+       {(provided) => (  
+       <div  {...provided.droppableProps} ref={provided.innerRef}  className="container">
+       <div className="boards"> 
+         <div className="board_title">  
+           {props.title} 
+           <span>
+               <iconbutton onClick={()=> {setShowModal(true); setIsEdit(false)}}><BsFillPlusCircleFill size='25px'/></iconbutton>          
+               {showModal && <Modal modalAlert = {boardAlert} isEdit ={isEdit} showEditModal = {showEditModal} cardID = {cardID}  title = {isEdit ? title : ""} description =  {isEdit ? description : ""} type={props.title} onClose= {() =>setShowModal(false)} />}
+           </span>
+         </div>
+         <div className = "board-content">
+           {props.boardData != null && props.boardData.map((item, index) => {
+               return (
+                <Cards cardAlert = {boardAlert} showEditModal = {showEditModal} index = {index} boardData= {props.title} data = {item.id} title = {item.title} description = {item.description}/> 
               )
-            })  
-         
-          }
-        </div>    
-      </div>
-    </div>
+             })  
+          
+           }
+         </div>    
+       </div>
+     </div>
+      )}
+    </Droppable>
   )
 }
 
